@@ -1,0 +1,147 @@
+/* Import cool Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap');
+
+/* ===== BODY / APP BACKGROUND ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: auto; /* ensure full-page gradient scroll */
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.navbar {
+  background: linear-gradient(90deg, #00796b, #004d40);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar brand (your name) */
+.navbar-light .navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff !important;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Nav links */
+.nav-link {
+  color: #e0f2f1 !important;
+  font-family: 'Montserrat', sans-serif;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #fff176 !important;
+  text-decoration: underline;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: #004d40;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #00796b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+/* ===== TABLES ===== */
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+caption {
+  font-weight: bold;
+  padding: 10px;
+  background-color: #004d40;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+thead {
+  background-color: #00796b;
+  color: white;
+}
+
+tfoot {
+  background-color: #004d40;
+  color: white;
+}
+
+/* Highlight odd table rows */
+tr:nth-child(odd) td {
+  background: linear-gradient(90deg, #f1f8e9, #e0f7fa);
+}
+
+/* ===== LISTS ===== */
+ul, ol {
+  margin: 20px;
+  padding-left: 40px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ===== IMAGES ===== */
+img {
+  border-radius: 12px;
+  margin: 10px;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== AUDIO / VIDEO ===== */
+audio, video {
+  display: block;
+  margin: 15px auto;
+  border: 2px solid #004d40;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== FOOTER or 404 PAGE ===== */
+footer, .footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #004d40;
+  color: white;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+/* ===== OPTIONAL: CONTENT CARDS ===== */
+.section-card {
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
