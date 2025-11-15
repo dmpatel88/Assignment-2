@@ -1,12 +1,12 @@
 /********************************************************************************
-* WEB700 – Assignment 04
+* WEB700 – Assignment 05
 *
 * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
 *
 * https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 *
-* Name: Dev Mihir Patel Student ID: 143122240 Date: 02/11/2025
+* Name: Dev Mihir Patel Student ID: 143122240 Date: 15/11/2025
 *
 * Published URL: 
 *
@@ -16,6 +16,7 @@
 class LegoData {
   constructor() {
     this.sets = [];
+    this.themes = []; // NEW
   }
 
   initialize() {
@@ -25,7 +26,6 @@ class LegoData {
         const themeData = require("../data/themeData");
 
         this.sets = [];
-
         setData.forEach(s => {
           const themeObj = themeData.find(t => t.id.toString() === s.theme_id.toString());
           const themeName = themeObj ? themeObj.name : null;
@@ -33,6 +33,8 @@ class LegoData {
           newSet.theme = themeName;
           this.sets.push(newSet);
         });
+
+        this.themes = [...themeData]; // NEW: load themes
 
         resolve();
       } catch (err) {
@@ -48,11 +50,26 @@ class LegoData {
     });
   }
 
+  getAllThemes() { // NEW
+    return new Promise((resolve, reject) => {
+      if (this.themes && this.themes.length > 0) resolve(this.themes);
+      else reject("No themes available");
+    });
+  }
+
   getSetByNum(setNum) {
     return new Promise((resolve, reject) => {
       const found = this.sets.find(s => s.set_num === setNum);
       if (found) resolve(found);
       else reject(`Unable to find set: ${setNum}`);
+    });
+  }
+
+  getThemeById(id) { // NEW
+    return new Promise((resolve, reject) => {
+      const found = this.themes.find(t => t.id.toString() === id.toString());
+      if (found) resolve(found);
+      else reject("Unable to find requested theme");
     });
   }
 
@@ -69,17 +86,25 @@ class LegoData {
     });
   }
 
-  // 🆕 Step 3: Add this new method
   addSet(newSet) {
     return new Promise((resolve, reject) => {
-      // Check if the set already exists by comparing set_num
       const exists = this.sets.some(s => s.set_num === newSet.set_num);
-      
-      if (exists) {
-        reject("Set already exists");
-      } else {
+      if (exists) reject("Set already exists");
+      else {
         this.sets.push(newSet);
         resolve();
+      }
+    });
+  }
+
+  deleteSetByNum(setNum) { // NEW
+    return new Promise((resolve, reject) => {
+      const foundIndex = this.sets.findIndex(s => s.set_num == setNum);
+      if (foundIndex !== -1) {
+        this.sets.splice(foundIndex, 1);
+        resolve();
+      } else {
+        reject(`Unable to remove set: ${setNum}`);
       }
     });
   }
